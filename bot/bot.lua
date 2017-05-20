@@ -1,3 +1,5 @@
+-- آدرس کانال ما
+-- @Thunderous0
 tdcli = dofile('./tg/tdcli.lua')
 serpent = (loadfile "./libs/serpent.lua")()
 feedparser = (loadfile "./libs/feedparser.lua")()
@@ -94,19 +96,13 @@ function create_config( )
     admins = {},
     disabled_channels = {},
     moderation = {data = './data/moderation.json'},
-    info_text = [[》permag.ir v3
+    info_text = [[》@Thunderous0 v4
 
-🔰Our channel :
-》@permag_bots《
+🔰Our channe :
+》@Thunderous0《
 
-🔰Our channel2 :
-》@permag_ir《
-
-🔰Our channel3 :
-》@permag《
-
-🔰Our website :
-》http://permag.ir
+🔰Our channe :
+》@Thunderous0《
 ]],
   }
   serialize_to_file(config, './data/config.lua')
@@ -894,7 +890,6 @@ elseif msg.content_.ID == "MessageGame" then
   end
 
 end
--- http://permag.ir
--- @permag_ir
--- @permag_bots
--- @permag
+-- @Thunderous0
+-- @Thunderous0
+-- @Thunderous0
