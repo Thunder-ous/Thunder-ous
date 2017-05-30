@@ -3035,7 +3035,8 @@ if matches[1] == "قفل ها" and is_mod(msg) then
 text2 = [[
 
 🔐 لیست قفل ها 🔐
-
+		
+💡 @Thunderous0 💡
 
 💬 قفل کردن لینک گروه ها
 🔒*قفل لینک*
@@ -3091,6 +3092,7 @@ if matches[1] == "ممنوع" and is_mod(msg) then
 text3 = [[
 🔕 لیست ممنوعیت ها 🔕
 
+💡 @Thunderous0 💡
 
 💬 ارسال گیف ممنوع
 🔇*ممنوعیت گیف*
@@ -3168,6 +3170,8 @@ text4 = [[
 
 🔰 لیست دستورات مدیریت 🔰
 
+💡 @Thunderous0 💡
+		
 ➰شما میتوانید از '/' یا '!' یا '#' برای اجرای دستورات استفاده کنید.
 
 〰〰〰〰〰
@@ -3342,7 +3346,7 @@ local lang = redis:get(hash)
      if not lang then
      welcome = "*Welcome Dude*"
     elseif lang then
-     welcome = "_خوش آمدید_"
+     welcome = "_خوش آمدید_ \n2 💡 @Thunderous0 💡"
         end
      end
  if administration[tostring(arg.chat_id)]['rules'] then
@@ -3445,8 +3449,4 @@ patterns ={
 run=run,
 pre_process = pre_process
 }
--- کد های پایین در ربات نشان داده نمیشوند
--- http://permag.ir
--- @permag_ir
--- @permag_bots
--- @permag
+-- @Thunderous0
