@@ -3346,7 +3346,7 @@ local lang = redis:get(hash)
      if not lang then
      welcome = "*Welcome Dude*"
     elseif lang then
-     welcome = "_خوش آمدید_ \n2 💡 @Thunderous0 💡"
+     welcome = "_خوش آمدید_ \n @inliniabot 5185fcece892465dbace725aa2bc12e4"
         end
      end
  if administration[tostring(arg.chat_id)]['rules'] then
