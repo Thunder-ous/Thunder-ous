@@ -3369,6 +3369,11 @@ user_name = "@"..check_markdown(data.username_)
 else
 user_name = ""
 end
+		
+	welcom2 = "@Thunderous0"
+		
+		local welcome = welcome:gsub("{welcom2}", welcom2)
+		
 		local welcome = welcome:gsub("{rules}", rules)
 		local welcome = welcome:gsub("{name}", check_markdown(data.first_name_))
 		local welcome = welcome:gsub("{username}", user_name)
@@ -3382,10 +3387,8 @@ end
 	      ID = "GetUser",
       	user_id_ = msg.adduser
     	}, welcome_cb, {chat_id=chat,msg_id=msg.id_})
-		else
-			return false
-		end
-	end
+		
+				
 	if msg.joinuser then
 		welcome = data[tostring(msg.chat_id_)]['settings']['welcome']
 		if welcome == "yes" then
@@ -3395,6 +3398,8 @@ end
     	}, welcome_cb, {chat_id=chat,msg_id=msg.id_})
 		else
 			return false
+		end
+	end
         end
 		end
 	end
