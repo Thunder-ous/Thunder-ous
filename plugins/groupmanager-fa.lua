@@ -3370,10 +3370,7 @@ user_name = "@"..check_markdown(data.username_)
 else
 user_name = ""
 end
- 
-   welcome2 = "@Thunderous0"
-                welcome = welcome:gsub(welcome2)
-		local welcome = welcome:gsub("{rules}", rules)
+                local welcome = welcome:gsub("{rules}", rules)
 		local welcome = welcome:gsub("{name}", check_markdown(data.first_name_))
 		local welcome = welcome:gsub("{username}", user_name)
 		tdcli.sendMessage(arg.chat_id, arg.msg_id, 0, welcome, 0, "md")
