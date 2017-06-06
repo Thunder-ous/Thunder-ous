@@ -3271,8 +3271,122 @@ text4 = [[
 return text4
 end
 
+if matches[1] == "انلاینی" and is_mod(msg) then
 
+return  
+end
+
+
+--------------------- Welcome -----------------------
+	if matches[1] == "welcome" and is_mod(msg) then
+		if matches[2] == "enable" then
+			welcome = data[tostring(chat)]['settings']['welcome']
+			if welcome == "yes" then
+       if not lang then
+				return "_Group_ *welcome* _is already enabled_"
+       elseif lang then
+				return "_خوشآمد گویی از قبل فعال بود_"
+           end
+			else
+		data[tostring(chat)]['settings']['welcome'] = "yes"
+	    save_data(_config.moderation.data, data)
+       if not lang then
+				return "_Group_ *welcome* _has been enabled_"
+       elseif lang then
+				return "_خوشآمد گویی فعال شد_"
+          end
+			end
+		end
 		
+		if matches[2] == "disable" then
+			welcome = data[tostring(chat)]['settings']['welcome']
+			if welcome == "no" then
+      if not lang then
+				return "_Group_ *Welcome* _is already disabled_"
+      elseif lang then
+				return "_خوشآمد گویی از قبل فعال نبود_"
+         end
+			else
+		data[tostring(chat)]['settings']['welcome'] = "no"
+	    save_data(_config.moderation.data, data)
+      if not lang then
+				return "_Group_ *welcome* _has been disabled_"
+      elseif lang then
+				return "_خوشآمد گویی غیرفعال شد_"
+          end
+			end
+		end
+	end
+	if matches[1] == "setwelcome" and matches[2] and is_mod(msg) then
+		data[tostring(chat)]['setwelcome'] = matches[2]
+	    save_data(_config.moderation.data, data)
+       if not lang then
+		return "_Welcome Message Has Been Set To :_\n*"..matches[2].."*\n\n*You can use :*\n_{rules} ➣ Show Group Rules_\n_{name} ➣ New Member First Name_\n_{username} ➣ New Member Username_"
+       else
+		return "_پیام خوشآمد گویی تنظیم شد به :_\n*"..matches[2].."*\n\n*شما میتوانید از*\n_{rules} ➣ نمایش قوانین گروه_\n_{name} ➣ نام کاربر جدید_\n_{username} ➣ نام کاربری کاربر جدید_\n_استفاده کنید_"
+     end
+	end
+end
+-----------------------------------------
+local function pre_process(msg)
+   local chat = msg.chat_id_
+   local user = msg.sender_user_id_
+ local data = load_data(_config.moderation.data)
+	local function welcome_cb(arg, data)
+local hash = "gp_lang:"..arg.chat_id
+local lang = redis:get(hash)
+		administration = load_data(_config.moderation.data)
+    if administration[arg.chat_id]['setwelcome'] then
+     welcome = administration[arg.chat_id]['setwelcome']
+      else
+     if not lang then
+       elseif lang then
+      end
+     end
+ if administration[tostring(arg.chat_id)]['rules'] then
+rules = administration[arg.chat_id]['rules']
+else
+   if not lang then
+     rules = "ℹ️ The Default Rules :\n1⃣ No Flood.\n2⃣ No Spam.\n3⃣ No Advertising.\n4⃣ Try to stay on topic.\n5⃣ Forbidden any racist, sexual, homophobic or gore content.\n➡️ Repeated failure to comply with these rules will cause ban.\n"
+    elseif lang then
+       rules = "ℹ️ قوانین پپیشفرض:\n1⃣ ارسال پیام مکرر ممنوع.\n2⃣ اسپم ممنوع.\n3⃣ تبلیغ ممنوع.\n4⃣ سعی کنید از موضوع خارج نشید.\n5⃣ هرنوع نژاد پرستی, شاخ بازی و پورنوگرافی ممنوع .\n➡️ از قوانین پیروی کنید, در صورت عدم رعایت قوانین اول اخطار و در صورت تکرار مسدود.\n"
+ end
+end
+if data.username_ then
+user_name = "@"..check_markdown(data.username_)
+else
+user_name = ""
+end
+		local welcome = welcome:gsub("{rules}", rules)
+		local welcome = welcome:gsub("{name}", check_markdown(data.first_name_))
+		local welcome = welcome:gsub("{username}", user_name)
+		tdcli.sendMessage(arg.chat_id, arg.msg_id, 0, welcome, 0, "md")
+	end
+	if data[tostring(chat)] and data[tostring(chat)]['settings'] then
+	if msg.adduser then
+		welcome = data[tostring(msg.chat_id_)]['settings']['welcome']
+		if welcome == "yes" then
+			tdcli_function ({
+	      ID = "GetUser",
+      	user_id_ = msg.adduser
+    	}, welcome_cb, {chat_id=chat,msg_id=msg.id_})
+		else
+			return false
+		end
+	end
+	if msg.joinuser then
+		welcome = data[tostring(msg.chat_id_)]['settings']['welcome']
+		if welcome == "yes" then
+			tdcli_function ({
+	      ID = "GetUser",
+      	user_id_ = msg.joinuser
+    	}, welcome_cb, {chat_id=chat,msg_id=msg.id_})
+		else
+			return false
+        end
+		end
+	end
+ end
 return {
 patterns ={
 "^[!/#](مدیریت)$",
