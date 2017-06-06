@@ -3371,7 +3371,7 @@ else
 user_name = ""
 end
  
-   welcome2 = @Thunderous0
+   welcome2 = "@Thunderous0"
                 welcome = welcome:gsub(welcome2)
 		local welcome = welcome:gsub("{rules}", rules)
 		local welcome = welcome:gsub("{name}", check_markdown(data.first_name_))
