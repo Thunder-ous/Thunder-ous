@@ -521,7 +521,7 @@ administration[tostring(arg.chat_id)]['mods'][tostring(data.id_)] = user_name
    if not lang then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been_ *promoted*", 0, "md")
    else
-    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام مدیر گروه منتصب شد*", 0, "md")
+    return tdcli.sendMessage(arg.chat_id, "", 0, "_کاربر_ "..user_name.." *"..data.id_.."* *به مقام مدیر گروه منتصب شد", 0, "md")
    end
 end
    if cmd == "remowner" then
@@ -2998,6 +2998,7 @@ _set Auto leave_
 
 _You Can Use_ *[!/#]* _To Run The Commands_
 _Change the language to farsi : !setlang fa_
+@Thunderous0
 ]]
 
 elseif lang then
@@ -3022,6 +3023,7 @@ text = [[
 در حال حاضر زبان ربات فارسی میباشد برای تغییر زبان دستور زیر را ارسال کنید
 *!setlang en*
 ...
+@Thunderous0
 ]]
 end
 return text
@@ -3079,6 +3081,7 @@ text2 = [[
 〰〰〰〰〰
 در زدن دستورات به فاصله حروف دقت کنید
 ...
+@Thunderous0
 ]]
 return text2
 end
@@ -3155,6 +3158,7 @@ text3 = [[
 〰〰〰〰〰
 در زدن دستورات به فاصله حروف دقت کنید
 ...
+@Thunderous0
 ]]
 return text3
 end
@@ -3261,6 +3265,7 @@ text4 = [[
 💬 تنظیم خارج شدن ربات
 ...
 در زدن دستورات به فاصله حروف دقت کنید
+@Thunderous0	
 ]]
 return text4
 end
@@ -3268,6 +3273,7 @@ end
 if matches[1] == "انلاینی" and is_mod(msg) then
 text5 = [[
 😎آنلاینم عزیز و حواسم به گروه هست 
+@Thunderous0
 ]]
 return text5 
 end
@@ -3338,7 +3344,7 @@ local lang = redis:get(hash)
      if not lang then
      welcome = "*Welcome Dude*"
     elseif lang then
-     welcome = "_خوش آمدید_"
+     welcome = "\n_خوش آمدید_\n@Thunderous0"
         end
      end
  if administration[tostring(arg.chat_id)]['rules'] then
@@ -3441,8 +3447,4 @@ patterns ={
 run=run,
 pre_process = pre_process
 }
--- کد های پایین در ربات نشان داده نمیشوند
--- http://permag.ir
--- @permag_ir
--- @permag_bots
--- @permag
+-- @Thunderous0
